@@ -1,5 +1,7 @@
 # Trackerx API
 
+[![CircleCI](https://circleci.com/gh/agildav/trackerx-api.svg?style=svg&circle-token=3f2fd4b813dbd0afa1d1189e69b9ee3175cc58d3)](https://app.circleci.com/pipelines/github/agildav/trackerx-api)
+
 Trackerx package tracking API.
 
 ## Installation
