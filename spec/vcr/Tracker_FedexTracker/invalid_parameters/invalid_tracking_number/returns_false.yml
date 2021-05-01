@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://wsbeta.fedex.com/xml/
+    body:
+      encoding: UTF-8
+      string: |-
+        <TrackRequest xmlns="http://fedex.com/ws/track/v6">
+          <WebAuthenticationDetail>
+            <UserCredential>
+              <Key><FEDEX_KEY></Key>
+              <Password><FEDEX_PASSWORD></Password>
+            </UserCredential>
+          </WebAuthenticationDetail>
+          <ClientDetail>
+            <AccountNumber><FEDEX_ACCOUNT_NUMBER></AccountNumber>
+            <MeterNumber><FEDEX_METER></MeterNumber>
+            <Localization>
+              <LanguageCode>en</LanguageCode>
+              <LocaleCode>us</LocaleCode>
+            </Localization>
+          </ClientDetail>
+          <Version>
+            <ServiceId>trck</ServiceId>
+            <Major>6</Major>
+            <Intermediate>0</Intermediate>
+            <Minor>0</Minor>
+          </Version>
+          <PackageIdentifier>
+            <Value>XXYYZZ</Value>
+            <Type>TRACKING_NUMBER_OR_DOORTAG</Type>
+          </PackageIdentifier>
+          <IncludeDetailedScans>true</IncludeDetailedScans>
+        </TrackRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 03 Apr 2021 22:32:22 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - siteDC=wtc; path=/; domain=.fedex.com; expires=Sun, 04-Apr-2021 22:32:22 GMT
+      X-Csr-Log-Transaction-Id:
+      - b694424a-88ff-4322-bbfb-21b3346bb22c
+      X-Csr-Elapsed-Millis:
+      - '125'
+      Vary:
+      - Accept-Encoding
+      Responsesslprotocol:
+      - TLSv1.3
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="UTF-8"?><TrackReply xmlns="http://fedex.com/ws/track/v6"><HighestSeverity>ERROR</HighestSeverity><Notifications><Severity>ERROR</Severity><Source>trck</Source><Code>6035</Code><Message>Invalid
+        tracking numbers. Please check the following numbers and resubmit.</Message><LocalizedMessage>Invalid
+        tracking numbers. Please check the following numbers and resubmit.</LocalizedMessage></Notifications><Version><ServiceId>trck</ServiceId><Major>6</Major><Intermediate>0</Intermediate><Minor>0</Minor></Version></TrackReply>
+  recorded_at: Sat, 03 Apr 2021 22:32:22 GMT
+recorded_with: VCR 6.0.0

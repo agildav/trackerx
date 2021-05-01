@@ -1,0 +1,48 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1 documentation
+  version: v1
+paths:
+  "/api/v1/shipments/tracking/{tracking_number}":
+    get:
+      summary: Track shipment
+      tags:
+      - Shipments
+      parameters:
+      - name: tracking_number
+        in: path
+        example: '713062653486'
+        required: true
+        schema:
+          type: string
+      - name: carrier
+        in: query
+        required: true
+        example: FEDEX
+        schema:
+          type: string
+      responses:
+        '200':
+          description: returns tracking in process
+          content:
+            application/json:
+              example:
+                status: ok
+                data: processing
+                meta: 
+        '400':
+          description: returns invalid carrier
+          content:
+            application/json:
+              example:
+                message: Invalid carrier
+                status: bad_request
+                type: request_error
+                errors: []
+components: {}
+servers:
+- url: http://{localHost}
+  variables:
+    localHost:
+      default: localhost:3000
